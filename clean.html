@@ -1,406 +1,691 @@
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!doctype html>
+<html lang="en-GB">
 <head>
-<TITLE>Drone Pilot Certificate by Airdata UAV</TITLE>
-<link rel="icon" type="image/png" href="/favicon-96x96.png?v=6" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=6" />
-<link rel="shortcut icon" href="/favicon.ico?v=6" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=6" />
-<meta name="apple-mobile-web-app-title" content="AirData" />
-<link rel="manifest" href="/site.webmanifest?v=6" /><link rel="StyleSheet" href="/AirdataCustom.css" type="text/css" />
-<link rel="StyleSheet" href="/styleNN.css?ver=1743469668" type="text/css" />
-<link rel="StyleSheet" href="/style.css?ver=1754074634" type="text/css" />
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700,800|Raleway" rel="stylesheet" type="text/css">
-<script src="/jquery3.7.1/jquery.min.js"></script>
-<script src="/js/jquery.pretty-break.js"></script>
-<link rel="stylesheet" href="https://cloud.typography.com/8000976/6815772/css/fonts.css" />
-<link rel="stylesheet" href="/css/certificates.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flight Data Wall</title>
 
-<style type="text/css">
-	.safetyByAirdata{
-		font-family: 'Gotham A','Gotham B','Open Sans', sans-serif !important;
-		font-size:40px !important;
-		color: #38b6d7 !important;
-		font-weight: 800 !important;
-		text-decoration: none !important;
-	}
-	div.safetyByAirdata{
-		width:100%;
-		padding-top: 4px;
-	}
-	.cleanHREF:hover{
-		background-color:transparent;
-	}
-	@media screen and (min-width: 800px) and (max-width: 999px) {
-		.safetyByAirdata{
-			font-size:30px !important;
-		}
-	}
-	@media screen and (max-width: 799px) {
-		.safetyByAirdata{
-			font-size:20px !important;
-		}
-	}
-    #main {
-      transition: margin-left .5s;
-      /*height: 100%;*/
-      width: 100%;
+  <style>
+    :root{
+      --bg:#0b0d10;
+      --fg:#e9eef5;
+      --muted:#9aa7b6;
+      --card:rgba(255,255,255,0.06);
+      --card-border:rgba(255,255,255,0.10);
     }
 
-    .body-bg-style{
-        background: url('/images/header-back-80.jpg') center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: auto auto;
-        background-size: cover;
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 800px at 30% 20%, rgba(74,144,226,0.14), transparent 55%),
+        radial-gradient(1000px 700px at 80% 70%, rgba(255,59,92,0.10), transparent 60%),
+        var(--bg);
+      color:var(--fg);
+      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;
+      overflow:hidden;
     }
 
-    #main-canvas{
-        padding: 60px 40px;
-        height:90%;
-        width:95%
+    /* Leave room for the fixed CAA banner */
+    .frame{
+      height:100%;
+      display:grid;
+      grid-template-rows:auto 1fr auto;
+      gap:14px;
+      padding:18px 22px 96px;
     }
 
-    .white-box{
-        background-color: rgba(254,254,254,1);
-        /*margin: auto;*/
-        border-radius: 5px;
-        width: 95%;
+    header, footer{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding:10px 14px;
+      background:var(--card);
+      border:1px solid var(--card-border);
+      border-radius:14px;
+      backdrop-filter: blur(8px);
     }
 
-    .stat-main-section{
-        height: 220px;
+    header .left{
+      display:flex;
+      align-items:baseline;
+      gap:12px;
+      min-width:0;
     }
 
-    .type-main-section{
-        margin-top: 15px;
-        height:auto;
+    header h1{
+      font-size:18px;
+      margin:0;
+      white-space:nowrap;
     }
 
-    .type-item-section{
-        padding-left: 15px;
-        padding-right: 15px;
-        margin-top: 15px;
-        white-space: nowrap;
-        overflow-x: auto;
-        /*overflow-y: hidden;*/
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        position: relative;
-        bottom: 0;
+    header .sub{
+      font-size:13px;
+      color:var(--muted);
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
     }
 
-    .type-item{
-        display: inline-block;
-        text-align: left;
-        padding-left: 6px;
-        margin-left: 5px;
-        margin-right: 5px;
-        margin-bottom: 10px;
-        border-radius: 5px;
-        height: 100%;
-        min-width: 16%;
-        position: relative;
-        font-size: 14px;
-        bottom: 0;
-        height: 38px;
-        line-height: 36px;
-        min-width: 140px;
-    }
-    .type-item-image{
-    	position: absolute;
-		height: 34px;
-		right: 2px;
-		top: 1px;
-		max-width: 66px;
-    }
-        .type-item{
-    	height: 76px;
-    	line-height: 74px;
-    }
-    .type-item-image{
-    	top: 22px;
-    }
-        .medal-main-section{
-        margin-top: 15px;
-        min-height: 170px;
+    header .right{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
     }
 
-    .medal-items-section{
-        padding-left: 0px;
-        padding-right: 0px;
-        white-space: nowrap;
-        overflow-x: auto;
-        overflow-y: hidden;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        position: relative;
-        bottom: 0;
-        justify-content: center;
+    .pill{
+      font-size:12px;
+      color:var(--muted);
+      border:1px solid var(--card-border);
+      border-radius:999px;
+      padding:6px 10px;
+      background:rgba(0,0,0,0.2);
+      white-space:nowrap;
     }
 
-    .medal-item-box{
-        display: inline-block;
-        padding-top: 10px;
-        padding-bottom: 10px;
-         
-        	width: 110px;
-                height: 95%;
-        position: relative;
-        bottom: 0;
+    .stage{
+      position:relative;
+      background:var(--card);
+      border:1px solid var(--card-border);
+      border-radius:18px;
+      overflow:hidden;
+      min-height:0;
+      padding:16px;
     }
 
-    .medal-text{
-        white-space:normal;
-        /*padding: 5px;*/
-        font-size: 14px;
-    }
-    .logo-main-section{
-    	margin-top: 30px;
-    }
-
-
-    .blue-box{
-        background-color: #e0f1fd;
-    }
-    .stat-items-section{
-        padding-left: 20px;
-        padding-right: 20px;
-        height: 90%;
-        /*white-space: nowrap;*/
-        overflow-x: hidden;
-        overflow-y: hidden;
-        display: flex;
-        justify-content: space-between;
-        position: relative;
-        bottom: 0;
+    .grid{
+      height:100%;
+      display:grid;
+      grid-template-columns: 2fr 1fr;
+      gap:16px;
+      min-height:0;
     }
 
-    .stat-item-box{
-        display: inline-block;
-        /*margin: auto;*/
-        padding-top: 10px;
-        padding-bottom: 10px;
-        width: 30%;
-        height: 69%;
-        border-radius: 5px;
-        position: relative;
-        bottom: 0;
-    }
-    .stat-label{
-        height: 20%;
-        font-size: 14px;
+    .panel{
+      position:relative;
+      background:rgba(0,0,0,0.18);
+      border:1px solid rgba(255,255,255,0.10);
+      border-radius:16px;
+      overflow:hidden;
+      min-height:0;
     }
 
-    .stat-value{
-        height: 80%;
-        font-size: 25px;
-        font-weight: bold;
-        color: #38b6d7;
-        padding-top: 20px;
+    /* --- AirData iframe scaling wrapper --- */
+    .cert-wrap{
+      position:absolute;
+      inset:0;
+      overflow:hidden;
+      background:rgba(0,0,0,0.15);
+      --scale: 0.46;
+      --x: 0px;
+      --y: 0px;
     }
 
-    .no-of-flight-stat-label{
-        padding-top: 30px;
-        height: 20%;
-        font-size: 18px;
-        font-weight: bold;
+    .cert-iframe{
+      position:absolute;
+      top:0;
+      left:0;
+      width:calc(100% / var(--scale));
+      height:calc(100% / var(--scale));
+      transform: scale(var(--scale)) translate(var(--x), var(--y));
+      transform-origin: top left;
+      border:0;
+      background:#fff;
     }
 
-    .no-of-flight-stat-value{
-        height: 80%;
-        font-size: 95px;
-        font-weight: bold;
-        color: #38b6d7;
-        padding-top:0px;
-    }
-    @media screen and (min-width: 1050px) and (max-width: 1400px) {
-    	.no-of-flight-stat-value{
-    		font-size: 75px;
-    		padding-top: 6px;
-    	}
-    }
-    @media screen and (min-width: 800px) and (max-width: 1049px) {
-    	.no-of-flight-stat-value{
-    		padding-top: 14px;
-    		font-size: 55px;
-    	}
-    }
-    @media screen and (max-width: 799px) {
-    	.no-of-flight-stat-value{
-    		padding-top: 14px;
-    		font-size: 30px;
-    	}
+    /* Display-only mode */
+    .display-only .cert-iframe,
+    .display-only #yt-player iframe{
+      pointer-events:none;
     }
 
-    .profile-picture{
-        margin-top: -40px;
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        border: 3px solid #FFFFFF;
+    /* --- Media panel --- */
+    .media-header{
+      position:absolute;
+      top:10px;
+      left:12px;
+      right:12px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      z-index:3;
     }
-    .company-logo{
-        width: 250px;
-        height: 250px;
-        border-radius: 20%;
-        border: 3px solid #FFFFFF;
-    }
-    
-    .byAirdataLink{
-    	font-size: 14px !important;
-    	color: #38b6d7 !important;
-    	font-weight: 800 !important;
-    	text-decoration: none !important;
-    }
-    .certMedal{
-    	width:100px;
-    	padding-bottom: 5px;
-    	display: inline-block;
-    }
-    
-    .course_div {
-		cursor: default;
-	}
 
-</style>
+    .media-title{
+      font-size:13px;
+      color:var(--muted);
+      white-space:nowrap;
+    }
+
+    .media-bg{
+      position:absolute;
+      inset:0;
+      background-position:center;
+      background-size:cover;
+      filter: blur(18px);
+      transform: scale(1.08);
+      opacity:0.55;
+      z-index:1;
+    }
+
+    .media-video{
+      position:absolute;
+      inset:0;
+      display:grid;
+      place-items:center;
+      padding:24px;
+      z-index:2;
+    }
+
+    /* The API injects an iframe inside this */
+    #yt-player{
+      width:100%;
+      height:100%;
+      border-radius:12px;
+      overflow:hidden;
+      box-shadow:0 20px 60px rgba(0,0,0,0.45);
+      background: rgba(0,0,0,0.35);
+    }
+    #yt-player iframe{
+      width:100%;
+      height:100%;
+      border:0;
+      border-radius:12px;
+    }
+
+    footer .hint{
+      font-size:12px;
+      color:var(--muted);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .progress{
+      width:240px;
+      height:10px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.10);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,0.10);
+    }
+
+    .progress > div{
+      height:100%;
+      width:0%;
+      background:rgba(233,238,245,0.85);
+      transition:width 200ms linear;
+    }
+
+    @media (max-width:980px){
+      .grid{ grid-template-columns:1fr; }
+      .frame{ padding-bottom: 112px; }
+    }
+
+    /* ===============================
+       CAA Operational Authority Bar
+       =============================== */
+    .CAA-BANNER{
+      position:fixed;
+      bottom:14px;
+      left:14px;
+      right:14px;
+      height:64px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+
+      background:rgba(0,0,0,0.55);
+      backdrop-filter: blur(10px);
+      border:1px solid rgba(255,255,255,0.12);
+      border-radius:14px;
+      padding:10px 16px;
+      z-index:999;
+    }
+
+    .CAA-LEFT{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+    }
+
+    .CAA-LOGO{
+      height:34px;
+      width:auto;
+      filter:brightness(1.05);
+    }
+
+    .CAA-TEXT{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+      min-width:0;
+    }
+
+    .CAA-TITLE{
+      font-size:13px;
+      font-weight:600;
+      letter-spacing:0.3px;
+    }
+
+    .CAA-SUB{
+      font-size:11px;
+      color:rgba(255,255,255,0.7);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .CAA-RIGHT{
+      display:flex;
+      align-items:center;
+    }
+
+    .CAA-PILL{
+      font-size:12px;
+      padding:6px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.18);
+      background:rgba(0,0,0,0.35);
+      color:rgba(255,255,255,0.85);
+      white-space:nowrap;
+    }
+
+    /* ===============================
+       Cert scale buttons (fade in)
+       =============================== */
+    .scale-controls{
+      position:absolute;
+      top:12px;
+      right:12px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      z-index:10;
+      opacity:0;
+      transform: translateY(-2px);
+      transition: opacity 180ms ease, transform 180ms ease;
+      pointer-events:none; /* enabled on hover */
+    }
+
+    /* Show controls when hovering the cert panel, or after a user click/tap */
+    .cert-panel:hover .scale-controls,
+    .cert-panel.scale-controls-on .scale-controls{
+      opacity:1;
+      transform: translateY(0);
+      pointer-events:auto;
+    }
+
+    .scale-btn{
+      width:34px;
+      height:34px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,0.16);
+      background:rgba(0,0,0,0.35);
+      color:rgba(255,255,255,0.9);
+      font-size:18px;
+      line-height:34px;
+      text-align:center;
+      cursor:pointer;
+      user-select:none;
+      backdrop-filter: blur(8px);
+    }
+
+    .scale-btn:hover{
+      background:rgba(0,0,0,0.48);
+      border-color: rgba(255,255,255,0.22);
+    }
+
+    .scale-btn:active{
+      transform: translateY(1px);
+    }
+
+    .scale-readout{
+      min-width:62px;
+      text-align:center;
+      font-size:12px;
+      color:rgba(255,255,255,0.78);
+      border:1px solid rgba(255,255,255,0.12);
+      background:rgba(0,0,0,0.28);
+      padding:6px 10px;
+      border-radius:999px;
+      backdrop-filter: blur(8px);
+      cursor:pointer;
+      user-select:none;
+    }
+
+    .scale-readout:hover{
+      background:rgba(0,0,0,0.40);
+    }
+
+    .scale-readout small{
+      display:block;
+      font-size:10px;
+      color:rgba(255,255,255,0.55);
+      margin-top:1px;
+      line-height:1.05;
+    }
+  </style>
 </head>
-<body class="body-bg-style">
-    <div id="main" class="main-content">
-        <center>
-            <!--div id="main-canvas" -->
-                <table id="main-canvas" class="bg-style" cellspacing="0" cellpadding="0" border="0" >
-                    <tr>
-                        <td width="70%" style="text-align: center; vertical-align: middle;">
-                            <div class="white-box stat-main-section">
 
-                                <table cellspacing="0" cellpadding="0" border="0" width="100%" style="height: 100%;" >
-                                    <tr style="height: 40%;">
-                                        <td  width="15%">
-                                            <div style="padding-left: 30px;">
-                                                <img class="profile-picture" src="https://app.airdata.com/profile_uploads/19a71ebf3092f.jpeg">
-                                            </div>
-                                        </td>
-                                        <td  width="84%" style="vertical-align:top; text-align: left;">
-                                            <div style="padding-top: 16px;padding-left:10px;">
-                                                                                            <div style="font-size: 18px; font-weight: bold;padding-bottom:4px;">Secur-It Group</div>
-                                                                                        </div>
-                                        </td>
-                                    </tr>
-                                    <tr  style="height: 60%;">
-                                        <td  colspan="2" style="text-align: center;">
-                                            <div class="stat-items-section">
-                                                <div class="blue-box stat-item-box">
-                                                    <div class="stat-label">Drones flown</div>
-                                                    <div class="stat-value">5</div>
-                                                </div>
-                                                <div class="blue-box stat-item-box">
-                                                    <div class="stat-label">Flight hours</div>
-                                                    <div class="stat-value">20 hours</div>
-                                                </div>
-                                                <div class="blue-box stat-item-box">
-                                                    <div class="stat-label">Distance flown</div>
-                                                    <div class="stat-value">117 km</div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </table>
+<body class="display-only">
+  <div class="frame">
 
+    <header>
+      <div class="left">
+        <h1>Flight Data Wall</h1>
+        <div class="sub">Global Data from all Secur-IT UAS Pilots</div>
+      </div>
+      <div class="right">
+        <div class="pill" id="refreshPill">Next stats refresh: —</div>
+      </div>
+    </header>
 
-                            </div>
-                        </td>
-                        <td width="30%" style="vertical-align: middle; text-align: center;">
-                            <div class="white-box  stat-main-section" style='width:100%;' >
-                                <div class="no-of-flight-stat-label">Number of flights</div>
-                                <div class="no-of-flight-stat-value">289</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr style='vertical-align:top;'>
-                        <td style="text-align: center; max-width: 1px">
-                            <div class="white-box type-main-section">
-                                <div style="padding-top: 30px; padding-bottom: 30px; height: 100%;width: 100%;">
-                                    <div style="padding-left: 25px; font-size: 18px; font-weight: bold; text-align: left;">
-                                        Drone types:
-                                    </div>
-                                    <div class="type-item-section">
-                                        <div class='blue-box type-item'>Matrice 4TD <img src='/images/drones-transparent/dji_matrice4TD.png' height=20 class='type-item-image' ></div><div class='blue-box type-item'>MavicMini <img src='/images/drones-transparent/dji_mavic-mini.png' height=20 class='type-item-image' ></div><div class='blue-box type-item'>Neo 2 <img src='/images/drones-transparent/dji_neo2.png' height=20 class='type-item-image' ></div>                                    </div>
-                                </div>
+    <main class="stage">
+      <div class="grid">
 
-                            </div>
-                            													<div class="white-box type-main-section">
-					                                <div style="padding-top: 30px; padding-bottom: 30px; height: 100%;width: 100%;">
-					                                    <div style="padding-left: 25px; font-size: 18px; font-weight: bold; text-align: left;">
-					                                        Pilot Active Certificates:
-					                                    </div>
-					                                    <div class="type-item-section">
-													<div class='course_div previewClass' ><div class='badge_type_icon_div_whitecover_horizontal'><img class='badge_type_icon_div_whitecover_horizontal' src='/images/white-box-256-256.png'></div><div class='badge_type_icon_div_whitecover_vertical'><img class='badge_type_icon_div_whitecover_vertical' src='/images/white-box-256-256.png'></div><div class='badge_type_icon_div'><img class='badge_type_icon_div' src='/images/schools/int/ad_government.svg' title='Government Certificate'></div><div class='course_icon_thumbnail_wrapper'><span style='display: inline-block;height: 100%;vertical-align: middle;'></span><img class='course_icon_thumbnail' src='https://app.airdata.com/images/schools/ext/heliguy.png' style='max-width: 120px;' title=''></div><div class='course_provider_div prettybreak'>Heliguy</div>
-<div class='course_title_div prettybreak'>CAA A2</div>
-</div>
-<div class='course_div previewClass' ><div class='badge_type_icon_div_whitecover_horizontal'><img class='badge_type_icon_div_whitecover_horizontal' src='/images/white-box-256-256.png'></div><div class='badge_type_icon_div_whitecover_vertical'><img class='badge_type_icon_div_whitecover_vertical' src='/images/white-box-256-256.png'></div><div class='badge_type_icon_div'><img class='badge_type_icon_div' src='/images/schools/int/ad_government.svg' title='Government Certificate'></div><div class='course_icon_thumbnail_wrapper'><span style='display: inline-block;height: 100%;vertical-align: middle;'></span><img class='course_icon_thumbnail' src='https://app.airdata.com/images/schools/ext/uk_caa.svg' style='max-width: 90px;' title=''></div><div class='course_provider_div prettybreak'>CAA</div>
-<div class='course_title_div prettybreak'>CAA A1 & A3</div>
-</div>
-<div class='course_div previewClass' ><div class='badge_type_icon_div_whitecover_horizontal'><img class='badge_type_icon_div_whitecover_horizontal' src='/images/white-box-256-256.png'></div><div class='badge_type_icon_div_whitecover_vertical'><img class='badge_type_icon_div_whitecover_vertical' src='/images/white-box-256-256.png'></div><div class='badge_type_icon_div'><img class='badge_type_icon_div' src='/images/schools/int/ad_government.svg' title='Government Certificate'></div><div class='course_icon_thumbnail_wrapper'><span style='display: inline-block;height: 100%;vertical-align: middle;'></span><img class='course_icon_thumbnail' src='https://app.airdata.com/images/schools/ext/heliguy.png' style='max-width: 120px;' title=''></div><div class='course_provider_div prettybreak'>Heliguy</div>
-<div class='course_title_div prettybreak'>CAA Multi-rotor</div>
-</div>
-<div class='course_div previewClass' ><div class='badge_type_icon_div_whitecover_horizontal'><img class='badge_type_icon_div_whitecover_horizontal' src='/images/white-box-256-256.png'></div><div class='badge_type_icon_div_whitecover_vertical'><img class='badge_type_icon_div_whitecover_vertical' src='/images/white-box-256-256.png'></div><div class='badge_type_icon_div'><img class='badge_type_icon_div' src='/images/schools/int/ad_government.svg' title='Government Certificate'></div><div class='course_icon_thumbnail_wrapper'><span style='display: inline-block;height: 100%;vertical-align: middle;'></span><img class='course_icon_thumbnail' src='https://app.airdata.com/images/schools/ext/euro_easa.png' style='' title=''></div><div class='course_provider_div prettybreak'>EASA France</div>
-<div class='course_title_div prettybreak'>EASA A1 & A3</div>
-</div>
-<div class='course_div previewClass' ><div class='badge_type_icon_div_whitecover_horizontal'><img class='badge_type_icon_div_whitecover_horizontal' src='/images/white-box-256-256.png'></div><div class='badge_type_icon_div_whitecover_vertical'><img class='badge_type_icon_div_whitecover_vertical' src='/images/white-box-256-256.png'></div><div class='badge_type_icon_div'><img class='badge_type_icon_div' src='/images/schools/int/ad_government.svg' title='Government Certificate'></div><div class='course_icon_thumbnail_wrapper'><span style='display: inline-block;height: 100%;vertical-align: middle;'></span><img class='course_icon_thumbnail' src='https://app.airdata.com/images/schools/ext/pilot_institute.png' style='' title=''></div><div class='course_provider_div prettybreak'>Pilot Institute</div>
-<div class='course_title_div prettybreak'>FAA Trust Certificate</div>
-</div>
-																		</div>
-									</div>
-								</div>
+        <!-- AirData Certificate -->
+        <section class="panel cert-panel" id="certPanel">
+          <div class="scale-controls" aria-label="Certificate scale controls">
+            <div class="scale-btn" id="scaleDown" title="Zoom out">−</div>
 
-                            	                            <div class="white-box medal-main-section">
-                                <div class="medal-items-section">
-                                	<div style="" class="safetyByAirdata cleanHREF">
-                                		Flight safety by <a href="https://airdata.com/" class=safetyByAirdata>AIRDATA</a>
-                                	</div>
-                                	                                        <div class="medal-item-box">
-                                            <div><img class=certMedal  src="/images/cert-medal.png"></div>
-                                            <div><span class="medal-text"><NOBR>Drone Safety</NOBR><BR>Verified</span></div>
-                                        </div>
-                                                                                                                <div class="medal-item-box">
-                                            <div><img class=certMedal  src="/images/cert-medal.png"></div>
-                                            <div><span class="medal-text"><NOBR>In-flight<BR>Wind Safety</NOBR></span></div>
-                                        </div>
-                                    									                                        <div class="medal-item-box">
-                                            <div><img class=certMedal src="/images/cert-medal.png"></div>
-                                            <div><span class="medal-text">Maintenance<BR>Tracked</span></div>
-                                        </div>
-                                    									                                                                            <div class="medal-item-box">
-                                            <div><img class=certMedal src="/images/cert-medal.png"></div>
-                                            <div><span class="medal-text"><NOBR>Automatic</NOBR><BR>Alerts</span></div>
-                                        </div>
-                                                                                                                <div class="medal-item-box">
-                                            <div><img class=certMedal src="/images/cert-medal.png"></div>
-                                                                                        	<div><span class="medal-text">Compliance<BR>Reports</span></div>
-                                        	                                        </div>
-                                                                        									
-                                </div>
-                            </div>
-                        </td>
-                        <td align=center >
-                            <div class="logo-main-section">
-                                <a href="https://airdata.com/" class="cleanHREF"><img style="width: 90%;padding-left: 3%;" src="/images/cert1-airdata-logo.png"></a>
-                            </div>
-                                                    </td>
-                    </tr>
-                </table>
-            <!--/div-->
-        </center>
+            <div class="scale-readout" id="scaleReadout" title="Click to return to auto-fit">
+              46%
+              <small id="scaleMode">AUTO</small>
+            </div>
+
+            <div class="scale-btn" id="scaleUp" title="Zoom in">+</div>
+          </div>
+
+          <div class="cert-wrap" id="certWrap">
+            <iframe
+              id="certFrame"
+              class="cert-iframe"
+              loading="eager"
+              referrerpolicy="no-referrer"
+              title="AirData Certificate"
+            ></iframe>
+          </div>
+        </section>
+
+        <!-- Media panel -->
+        <section class="panel">
+          <div class="media-header">
+            <div class="media-title" id="mediaTitle">Secur-IT Media Player</div>
+          </div>
+
+          <div class="media-bg" id="mediaBg"></div>
+
+          <div class="media-video">
+            <div id="yt-player" aria-label="YouTube playlist player"></div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <footer>
+      <div class="hint">Stats refresh automatically every hour. Hover the certificate panel to adjust scale, click AUTO to re-fit.</div>
+      <div class="progress"><div id="bar"></div></div>
+    </footer>
+
+  </div>
+
+  <!-- CAA Operational Authority Banner -->
+  <div class="CAA-BANNER" role="note" aria-label="CAA Operational Authorisation banner">
+    <div class="CAA-LEFT">
+      <img
+        src="https://register-drones.caa.co.uk/assets/images/caa_logo.png"
+        alt="UK Civil Aviation Authority"
+        class="CAA-LOGO"
+      />
+      <div class="CAA-TEXT">
+        <div class="CAA-TITLE">CAA Operational Authorisation Granted</div>
+        <div class="CAA-SUB">Approved UAS Operator · Advanced operations authorised under defined procedures</div>
+      </div>
     </div>
-    <script>
-    	$(document).ready(function() {
-	    	$('.prettybreak').each(function(){
-	    		$(this).prettyBreak();
-	    	});
-	    });
-    </script>
+    <div class="CAA-RIGHT">
+      <span class="CAA-PILL">Operator ID: <strong>GBR-OP-6PN55Z8L5VTQ</strong></span>
+    </div>
+  </div>
+
+  <script>
+    // =======================
+    // CONFIG
+    // =======================
+    const CERT_URL = "https://certificates.airdata.com/BmNedR";
+
+    // Video IDs - plays in order, loops forever
+    const VIDEO_PLAYLIST = [
+      "9P-4ax971wo",
+      "-HFS6P-FBOc",
+      "jZ3bDjjdXNc",
+      "UuNGXrXry4k",
+      "OwUwgpqgcMA",
+      "NMoUBGDDIfM"
+    ];
+
+    const MEDIA_TITLE = "Secur-IT UAV Media";
+
+    const REFRESH_EVERY_MS = 60 * 60 * 1000; // 1 hour
+
+    // Auto-fit assumptions for cross-origin certificate (tweak once if needed)
+    const CERT_BASE_W = 1400;
+    const CERT_BASE_H = 900;
+
+    // Manual scaling (session only)
+    const SCALE_STEP = 0.02;
+    const SCALE_MIN  = 0.40;
+    const SCALE_MAX  = 1.20;
+
+    const certFrame = document.getElementById("certFrame");
+    const certWrap  = document.getElementById("certWrap");
+    const certPanel = document.getElementById("certPanel");
+
+    const refreshPill = document.getElementById("refreshPill");
+    const bar = document.getElementById("bar");
+
+    const mediaBg   = document.getElementById("mediaBg");
+    const mediaTitle = document.getElementById("mediaTitle");
+
+    const scaleReadout = document.getElementById("scaleReadout");
+    const scaleModeEl  = document.getElementById("scaleMode");
+    const scaleDownBtn = document.getElementById("scaleDown");
+    const scaleUpBtn   = document.getElementById("scaleUp");
+
+    let manualScale = false;
+
+    // =======================
+    // Helpers
+    // =======================
+    function cacheBust(url){
+      const u = new URL(url);
+      u.searchParams.set("_ts", Date.now());
+      return u.toString();
+    }
+
+    function getScale(){
+      return parseFloat(getComputedStyle(certWrap).getPropertyValue("--scale")) || 0.46;
+    }
+
+    function setScale(value){
+      const clamped = Math.min(SCALE_MAX, Math.max(SCALE_MIN, value));
+      certWrap.style.setProperty("--scale", clamped.toFixed(3));
+      if (scaleReadout) scaleReadout.firstChild.nodeValue = Math.round(clamped * 100) + "%";
+      if (scaleModeEl) scaleModeEl.textContent = manualScale ? "MAN" : "AUTO";
+    }
+
+    function showControlsTemporarily(){
+      if (!certPanel) return;
+      certPanel.classList.add("scale-controls-on");
+      clearTimeout(window._scaleControlsT);
+      window._scaleControlsT = setTimeout(() => {
+        certPanel.classList.remove("scale-controls-on");
+      }, 3500);
+    }
+
+    // =======================
+    // Auto-fit (cross-origin safe)
+    // =======================
+    function autoFitCertificate(){
+      if (manualScale) return;
+
+      const rect = certWrap.getBoundingClientRect();
+      const padding = 16; // keep it slightly inset
+      const availW = Math.max(1, rect.width  - padding);
+      const availH = Math.max(1, rect.height - padding);
+
+      const scale = Math.min(availW / CERT_BASE_W, availH / CERT_BASE_H);
+      setScale(scale);
+    }
+
+    function enableAutoFit(){
+      manualScale = false;
+      autoFitCertificate();
+      showControlsTemporarily();
+    }
+
+    function nudgeScale(delta){
+      manualScale = true;
+      setScale(getScale() + delta);
+      showControlsTemporarily();
+    }
+
+    // =======================
+    // AirData certificate loading
+    // =======================
+    function loadCertificate(){
+      certFrame.src = cacheBust(CERT_URL);
+    }
+
+    // =======================
+    // Refresh timer (hourly)
+    // =======================
+    function startRefreshTimer(){
+      const start = Date.now();
+      const next = new Date(start + REFRESH_EVERY_MS);
+
+      refreshPill.textContent =
+        `Next stats refresh: ${next.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })}`;
+
+      if (window._progressTimer) clearInterval(window._progressTimer);
+      window._progressTimer = setInterval(() => {
+        const pct = Math.min(100, ((Date.now() - start) / REFRESH_EVERY_MS) * 100);
+        bar.style.width = pct.toFixed(2) + "%";
+      }, 500);
+
+      if (window._refreshTimer) clearTimeout(window._refreshTimer);
+      window._refreshTimer = setTimeout(() => {
+        loadCertificate();
+        bar.style.width = "0%";
+        startRefreshTimer();
+      }, REFRESH_EVERY_MS);
+    }
+
+    // =======================
+    // YouTube Playlist Player (IFrame API)
+    // =======================
+    let ytPlayer;
+    let currentIndex = 0;
+
+    function initYouTubeBackground(){
+      if (mediaTitle) mediaTitle.textContent = MEDIA_TITLE;
+      if (mediaBg && VIDEO_PLAYLIST.length) {
+        mediaBg.style.backgroundImage =
+          `url("https://i.ytimg.com/vi/${VIDEO_PLAYLIST[0]}/hqdefault.jpg")`;
+      }
+    }
+
+    // Called by https://www.youtube.com/iframe_api
+    function onYouTubeIframeAPIReady() {
+      ytPlayer = new YT.Player("yt-player", {
+        width: "100%",
+        height: "100%",
+        videoId: VIDEO_PLAYLIST[0],
+        playerVars: {
+          autoplay: 1,
+          controls: 0,
+          mute: 1,
+          rel: 0,
+          modestbranding: 1,
+          playsinline: 1,
+          fs: 0,
+          iv_load_policy: 3
+        },
+        events: {
+          onReady: (e) => {
+            try { e.target.mute(); } catch {}
+            e.target.playVideo();
+          },
+          onStateChange: (e) => {
+            if (e.data === YT.PlayerState.ENDED) {
+              currentIndex = (currentIndex + 1) % VIDEO_PLAYLIST.length;
+              ytPlayer.loadVideoById(VIDEO_PLAYLIST[currentIndex]);
+              if (mediaBg) {
+                mediaBg.style.backgroundImage =
+                  `url("https://i.ytimg.com/vi/${VIDEO_PLAYLIST[currentIndex]}/hqdefault.jpg")`;
+              }
+            }
+          },
+          onError: () => {
+            setTimeout(() => {
+              currentIndex = (currentIndex + 1) % VIDEO_PLAYLIST.length;
+              ytPlayer.loadVideoById(VIDEO_PLAYLIST[currentIndex]);
+              if (mediaBg) {
+                mediaBg.style.backgroundImage =
+                  `url("https://i.ytimg.com/vi/${VIDEO_PLAYLIST[currentIndex]}/hqdefault.jpg")`;
+              }
+            }, 1500);
+          }
+        }
+      });
+    }
+
+    // =======================
+    // Init
+    // =======================
+    loadCertificate();
+    initYouTubeBackground();
+    startRefreshTimer();
+
+    // Auto-fit on load, and when the iframe finishes rendering
+    enableAutoFit();
+    certFrame.addEventListener("load", () => {
+      setTimeout(autoFitCertificate, 150);
+    });
+
+    // Auto-fit on resize (unless manual mode)
+    window.addEventListener("resize", () => {
+      clearTimeout(window._fitT);
+      window._fitT = setTimeout(autoFitCertificate, 80);
+    });
+
+    // Mouse-only controls
+    if (scaleDownBtn) scaleDownBtn.addEventListener("click", () => nudgeScale(-SCALE_STEP));
+    if (scaleUpBtn)   scaleUpBtn.addEventListener("click", () => nudgeScale(+SCALE_STEP));
+
+    // Click the readout to return to AUTO fit
+    if (scaleReadout) scaleReadout.addEventListener("click", () => enableAutoFit());
+
+    // If someone taps/clicks the cert panel (wall mouse), show controls briefly
+    if (certPanel) certPanel.addEventListener("mousedown", showControlsTemporarily);
+
+    // Optional keyboard backup
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "[") nudgeScale(-SCALE_STEP);
+      if (e.key === "]") nudgeScale(+SCALE_STEP);
+      if (e.key.toLowerCase() === "a") enableAutoFit();
+    });
+  </script>
+
+  <!-- YouTube IFrame Player API -->
+  <script src="https://www.youtube.com/iframe_api"></script>
 </body>
 </html>
